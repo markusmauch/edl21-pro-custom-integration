@@ -1,11 +1,12 @@
 {
   "domain": "edl21_pro",
   "name": "EDL21 Pro",
-  "codeowners": [],
+  "codeowners": ["@markusmauch"],
   "config_flow": true,
-  "documentation": "https://www.home-assistant.io/integrations/edl21",
+  "documentation": "https://github.com/markusmauch/edl21-pro-custom-integration",
   "integration_type": "hub",
   "iot_class": "local_push",
   "loggers": ["sml"],
+  "version": "0.0.2",
   "requirements": ["pysml==0.0.12"]
 }
