@@ -327,8 +327,7 @@ class EDL21:
         self._proto = SmlProtocol(config[CONF_SERIAL_PORT])
         self._proto.add_listener(self.event, ["SmlGetListResponse"])
         LOGGER.debug(
-            "Initialized EDL21 on %s",
-            config[CONF_SERIAL_PORT],
+            f"Initialized EDL21 on {config[CONF_SERIAL_PORT]}. Update interval: {self._update_interval.seconds} s."
         )
 
     async def connect(self) -> None:
@@ -363,11 +362,11 @@ class EDL21:
                 if entity_description:
                     new_entities.append(
                         EDL21Entity(
-                            electricity_id,
-                            obis,
-                            entity_description,
-                            telegram,
-                            self._update_interval,
+                            electricity_id=electricity_id,
+                            obis=obis,
+                            entity_description=entity_description,
+                            telegram=telegram,
+                            min_time=self._update_interval,
                         )
                     )
                     self._registered_obis.add((electricity_id, obis))
@@ -395,13 +394,13 @@ class EDL21Entity(SensorEntity):
         obis,
         entity_description,
         telegram,
-        update_interval: timedelta,
-    ):
+        min_time: timedelta,
+    ) -> None:
         """Initialize an EDL21Entity."""
         self._electricity_id = electricity_id
         self._obis = obis
         self._telegram = telegram
-        self._min_time = update_interval
+        self._min_time = min_time
         self._last_update = utcnow()
         self._async_remove_dispatcher = None
         self.entity_description = entity_description
