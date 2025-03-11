@@ -8,6 +8,8 @@ DOMAIN = "edl21_pro"
 
 CONF_SERIAL_PORT = "serial_port"
 
+CONF_UPDATE_INTERVAL = "update_interval"
+
 SIGNAL_EDL21_TELEGRAM = "edl21_telegram"
 
 DEFAULT_TITLE = "Smart Meter"

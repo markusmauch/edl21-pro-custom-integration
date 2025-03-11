@@ -1,0 +1,113 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Das Gerät ist bereits konfiguriert"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "serial_port": "USB-Gerätepfad",
+                    "update_interval": "Aktualisierungsintervall"
+                },
+                "title": "EDL21 Smart Meter hinzufügen"
+            }
+        }
+    },
+    "entity": {
+        "sensor": {
+            "absolute_active_instantaneous_power": {
+                "name": "Absolute momentane Wirkleistung"
+            },
+            "configuration_program_version_number": {
+                "name": "Konfigurationsprogramm-Version"
+            },
+            "electricity_id": {
+                "name": "Stromzähler-ID"
+            },
+            "firmware_version_number": {
+                "name": "Firmware-Version"
+            },
+            "internal_operating_status": {
+                "name": "Interner Betriebsstatus"
+            },
+            "l1_active_instantaneous_amperage": {
+                "name": "L1 momentaner Strom"
+            },
+            "l1_active_instantaneous_power": {
+                "name": "L1 momentane Wirkleistung"
+            },
+            "l1_active_instantaneous_voltage": {
+                "name": "L1 momentane Spannung"
+            },
+            "l2_active_instantaneous_amperage": {
+                "name": "L2 momentaner Strom"
+            },
+            "l2_active_instantaneous_power": {
+                "name": "L2 momentane Wirkleistung"
+            },
+            "l2_active_instantaneous_voltage": {
+                "name": "L2 momentane Spannung"
+            },
+            "l3_active_instantaneous_amperage": {
+                "name": "L3 momentaner Strom"
+            },
+            "l3_active_instantaneous_power": {
+                "name": "L3 momentane Wirkleistung"
+            },
+            "l3_active_instantaneous_voltage": {
+                "name": "L3 momentane Spannung"
+            },
+            "last_signed_positive_active_energy_total": {
+                "name": "Letzte signierte positive Wirkenergie gesamt"
+            },
+            "metering_point_id_1": {
+                "name": "Messpunkt-ID 1"
+            },
+            "negative_active_energy_tariff_t1": {
+                "name": "Negative Wirkenergie in Tarif T1"
+            },
+            "negative_active_energy_tariff_t2": {
+                "name": "Negative Wirkenergie in Tarif T2"
+            },
+            "negative_active_energy_total": {
+                "name": "Negative Wirkenergie gesamt"
+            },
+            "ownership_id": {
+                "name": "Eigentümer-ID"
+            },
+            "positive_active_energy_tariff_t1": {
+                "name": "Positive Wirkenergie in Tarif T1"
+            },
+            "positive_active_energy_tariff_t2": {
+                "name": "Positive Wirkenergie in Tarif T2"
+            },
+            "positive_active_energy_total": {
+                "name": "Positive Wirkenergie gesamt"
+            },
+            "positive_active_instantaneous_power": {
+                "name": "Positive momentane Wirkleistung"
+            },
+            "sum_active_instantaneous_power": {
+                "name": "Summe momentane Wirkleistung"
+            },
+            "supply_frequency": {
+                "name": "Netzfrequenz"
+            },
+            "u_l1_i_l1_phase_angle": {
+                "name": "Phasenwinkel U(L1)/I(L1)"
+            },
+            "u_l2_i_l2_phase_angle": {
+                "name": "Phasenwinkel U(L2)/I(L2)"
+            },
+            "u_l2_u_l1_phase_angle": {
+                "name": "Phasenwinkel U(L2)/U(L1)"
+            },
+            "u_l3_i_l3_phase_angle": {
+                "name": "Phasenwinkel U(L3)/I(L3)"
+            },
+            "u_l3_u_l1_phase_angle": {
+                "name": "Phasenwinkel U(L3)/U(L1)"
+            }
+        }
+    }
+}

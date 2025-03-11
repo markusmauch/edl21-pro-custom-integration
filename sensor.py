@@ -35,13 +35,14 @@ from homeassistant.util.dt import utcnow
 
 from .const import (
     CONF_SERIAL_PORT,
+    CONF_UPDATE_INTERVAL,
     DEFAULT_DEVICE_NAME,
     DOMAIN,
     LOGGER,
     SIGNAL_EDL21_TELEGRAM,
 )
 
-MIN_TIME_BETWEEN_UPDATES = timedelta(seconds=1)
+MIN_TIME_BETWEEN_UPDATES = timedelta(seconds=CONF_SERIAL_PORT)
 
 # OBIS format: A-B:C.D.E*F
 SENSOR_TYPES: tuple[SensorEntityDescription, ...] = (
@@ -324,6 +325,7 @@ class EDL21:
         self._hass = hass
         self._async_add_entities = async_add_entities
         self._serial_port = config[CONF_SERIAL_PORT]
+        self._update_interval = config[CONF_UPDATE_INTERVAL]
         self._proto = SmlProtocol(config[CONF_SERIAL_PORT])
         self._proto.add_listener(self.event, ["SmlGetListResponse"])
         LOGGER.debug(
