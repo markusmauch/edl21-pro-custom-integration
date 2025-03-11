@@ -42,8 +42,6 @@ from .const import (
     SIGNAL_EDL21_TELEGRAM,
 )
 
-MIN_TIME_BETWEEN_UPDATES = timedelta(seconds=CONF_SERIAL_PORT)
-
 # OBIS format: A-B:C.D.E*F
 SENSOR_TYPES: tuple[SensorEntityDescription, ...] = (
     # A=1: Electricity
@@ -325,7 +323,7 @@ class EDL21:
         self._hass = hass
         self._async_add_entities = async_add_entities
         self._serial_port = config[CONF_SERIAL_PORT]
-        self._update_interval = config[CONF_UPDATE_INTERVAL]
+        self._update_interval = timedelta(seconds=config[CONF_UPDATE_INTERVAL])
         self._proto = SmlProtocol(config[CONF_SERIAL_PORT])
         self._proto.add_listener(self.event, ["SmlGetListResponse"])
         LOGGER.debug(
@@ -369,6 +367,7 @@ class EDL21:
                             obis,
                             entity_description,
                             telegram,
+                            self._update_interval,
                         )
                     )
                     self._registered_obis.add((electricity_id, obis))
@@ -390,12 +389,19 @@ class EDL21Entity(SensorEntity):
     _attr_should_poll = False
     _attr_has_entity_name = True
 
-    def __init__(self, electricity_id, obis, entity_description, telegram):
+    def __init__(
+        self,
+        electricity_id,
+        obis,
+        entity_description,
+        telegram,
+        update_interval: timedelta,
+    ):
         """Initialize an EDL21Entity."""
         self._electricity_id = electricity_id
         self._obis = obis
         self._telegram = telegram
-        self._min_time = MIN_TIME_BETWEEN_UPDATES
+        self._min_time = update_interval
         self._last_update = utcnow()
         self._async_remove_dispatcher = None
         self.entity_description = entity_description
